@@ -32,7 +32,7 @@ router.delete('/planet/:id', (req, res) => {
 
 router.patch('/planet/:id', (req, res) => {
   const _id = req.params.id
-  Planet.findByIdAndUpdate(_id)
+  Planet.findByIdAndUpdate(_id, req.body, {new: true, runValidators: true})
     .then(planet => res.send(planet))
     .catch(err => res.status(500).send(err))
 })
