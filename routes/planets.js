@@ -23,4 +23,11 @@ router.post('/planet', (req, res) => {
     .catch(err => res.status(500).send(err))
 })
 
+router.delete('/planet/:id', (req, res) => {
+  const _id = req.params.id
+  Planet.findByIdAndDelete(_id)
+    .then(() => res.send(planet))
+    .catch(err => res.status(500).send(err))
+})
+
 module.exports = router;
