@@ -30,4 +30,11 @@ router.delete('/planet/:id', (req, res) => {
     .catch(err => res.status(500).send(err))
 })
 
+router.patch('/planet/:id', (req, res) => {
+  const _id = req.params.id
+  Planet.findByIdAndUpdate(_id)
+    .then(planet => res.send(planet))
+    .catch(err => res.status(500).send(err))
+})
+
 module.exports = router;
